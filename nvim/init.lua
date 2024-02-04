@@ -35,3 +35,6 @@ require("lazy").setup("plugins")
 local opts = {}
 
 require("lazy").setup(plugins, opts)
+
+vim.keymap.set('n', '<leader>v', ':vsplit<CR>', {})
+vim.keymap.set('n', '<leader>q', ':wq<CR>', {})
