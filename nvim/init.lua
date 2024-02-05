@@ -34,7 +34,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 local opts = {}
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(opts, plugins)
 
 vim.keymap.set('n', '<leader>v', ':vsplit<CR>', {})
 vim.keymap.set('n', '<leader>q', ':wq<CR>', {})
+vim.keymap.set('n', '<leader>Q', ':wqa<CR>', {})
+vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
