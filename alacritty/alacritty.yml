@@ -1996,32 +1996,40 @@ schemes:
       white: '0xFFFFFF'
 
 colors:
-  name: 3024 (dark)
-  author: Chris Kempson
+  # Default colors
   primary:
-    background: "#090300"
-    foreground: "#a5a2a2"
+    background: '0x1E1D2F'
+    foreground: '0xD9E0EE'
+
   cursor:
-    text: "#090300"
-    cursor: "#a5a2a2"
+    text: '0x1E1D2F'
+    cursor: '0xF5E0DC'
+
+  # Normal colors
   normal:
-    black: "#090300"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#a5a2a2"
+    black: '0x6E6C7E'
+    red: '0xF28FAD'
+    green: '0xABE9B3'
+    yellow: '0xFAE3B0'
+    blue: '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan: '0x89DCEB'
+    white: '0xD9E0EE'
+
+  # Bright colors
   bright:
-    black: "#5c5855"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#f7f7f7"
+    black: '0x988BA2'
+    red: '0xF28FAD'
+    green: '0xABE9B3'
+    yellow: '0xFAE3B0'
+    blue: '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan: '0x89DCEB'
+    white: '0xD9E0EE'
+
+  indexed_colors:
+    - { index: 16, color: '0xF8BD96' }
+    - { index: 17, color: '0xF5E0DC' }
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
@@ -2113,8 +2121,8 @@ colors:
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /bin/zsh
 #  args:
 #    - --login
 # Startup directory
@@ -2554,4 +2562,4 @@ key_bindings:
   #print_events: false
   # Highlight window damage information.
   #highlight_damage: false
-theme: 3024.dark
+theme: Catppuccin
