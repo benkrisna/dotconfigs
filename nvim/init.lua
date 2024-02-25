@@ -17,6 +17,7 @@ vim.cmd("filetype off")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set rnu")
+vim.cmd("set clipboard+=unnamedplus")
 
 vim.g.mapleader = " "
 
@@ -45,3 +46,8 @@ vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
 vim.keymap.set('n', '<leader>m', ':colorscheme catppuccin-mocha<CR>', {})
 vim.keymap.set('n', '<leader>l', ':colorscheme catppuccin-latte<CR>', {})
 vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>//g<Left><Left>', {})
+vim.keymap.set('n', '<leader>8', ':vsplit<CR>gg=G:q<CR>', {})
+vim.keymap.set('n', '<leader>t', ':nohlsearch<Bar>:echo<CR>', {})
+vim.keymap.set('n', '<leader>h', 'o\\underline{\\textit{}} \\\\ <Left><Left><Left><Left><Left><Left>', {})
+vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
+vim.keymap.set('n', '<leader>w', '<C-w>h', {})
