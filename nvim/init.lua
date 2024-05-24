@@ -18,6 +18,7 @@ vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set rnu")
 vim.cmd("set clipboard+=unnamedplus")
+vim.api.nvim_set_option("clipboard","unnamed")
 
 vim.g.mapleader = " "
 
@@ -51,3 +52,4 @@ vim.keymap.set('n', '<leader>t', ':nohlsearch<Bar>:echo<CR>', {})
 vim.keymap.set('n', '<leader>h', 'o\\underline{\\textit{}} \\\\ <Left><Left><Left><Left><Left><Left>', {})
 vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
 vim.keymap.set('n', '<leader>w', '<C-w>h', {})
+vim.keymap.set('n', '<leader>e', ':source Session.vim<CR>', {})
