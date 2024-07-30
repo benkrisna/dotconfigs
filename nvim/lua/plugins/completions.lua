@@ -22,7 +22,8 @@ return {
       -- Set up nvim-cmp.
       local cmp = require('cmp')
       require("luasnip/loaders/from_vscode").lazy_load()
-
+      -- load snippets from path/of/your/nvim/config/my-cool-snippets
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
