@@ -24,6 +24,8 @@ return {
       require("luasnip/loaders/from_vscode").lazy_load()
       -- load snippets from path/of/your/nvim/config/my-cool-snippets
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
+      -- jupynium
+      local compare = cmp.config.compare
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -48,6 +50,7 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          { name = "jupynium", priority = 1000},
           { name = 'buffer' },
           { name = 'path' },
           { name = 'nvim_lsp' },
@@ -58,6 +61,15 @@ return {
             },
           },
         }),
+        sorting = {
+          priority_weight = 1.0,
+          comparators = {
+            compare.score,            -- Jupyter kernel completion shows prior to LSP
+            compare.recently_used,
+            compare.locality,
+            -- ...
+          },
+        }
       })
       -- Set up lspconfig.
       local capabilities = require('cmp_nvim_lsp').default_capabilities()

@@ -35,17 +35,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
-local opts = {}
-
-require("lazy").setup(opts, plugins)
+require("lazy").setup("plugins", {})
+--local opts = {}
+--
+--require("lazy").setup(opts, plugins)
 
 vim.keymap.set('n', '<leader>v', ':vsplit<CR>', {})
 vim.keymap.set('n', '<leader>q', ':wq<CR>', {})
 vim.keymap.set('n', '<leader>Q', ':wqa<CR>', {})
 vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
 vim.keymap.set('n', '<leader>m', ':colorscheme catppuccin-mocha<CR>', {})
-vim.keymap.set('n', '<leader>l', ':colorscheme catppuccin-latte<CR>', {})
+vim.keymap.set('n', '<leader>l', ':colorscheme tokyonight-moon<CR>', {})
 vim.keymap.set('n', '<leader>s', ':%s/<C-r><C-w>//g<Left><Left>', {})
 vim.keymap.set('n', '<leader>8', ':vsplit<CR>gg=G:q<CR>', {})
 vim.keymap.set('n', '<leader>t', ':nohlsearch<Bar>:echo<CR>', {})
@@ -54,3 +54,25 @@ vim.keymap.set('n', '<leader>i', ':b#<CR>', {})
 vim.keymap.set('n', '<leader>u', '0v$U<CR>', {})
 vim.keymap.set('n', '<leader>w', '<C-w>h', {})
 vim.keymap.set('n', '<leader>e', ':source Session.vim<CR>', {})
+
+-- MAGMA
+require('lazy').setup({
+    {
+        'dccsillag/magma-nvim',
+        config = function()
+            require('magma').setup()
+        end,
+    }
+})
+
+vim.cmd("nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>")
+vim.cmd("nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>")
+vim.cmd("xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>")
+vim.cmd("nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>")
+vim.cmd("nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>")
+vim.cmd("nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>")
+
+vim.cmd("let g:magma_automatically_open_output = v:false")
+vim.cmd("let g:magma_image_provider = 'ueberzug'")
+
+vim.opt.cursorline = true
