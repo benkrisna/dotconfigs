@@ -1,0 +1,22 @@
+# set up fzf key bindings and fzf completion
+eval "$(fzf --zsh)"
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# BAT
+export BAT_THEME=tokyonight_night
+
+# k
+alias jj='vim $(fzf --preview="bat --color=always {}")'
+
+# replace ls with eza :)
+alias ls=eza
+
+# ftn
+alias ftn='gfortran'
+
+# ssh
+alias ssh='ssh -o "XAuthLocation=/opt/X11/bin/xauth"'
+
+
