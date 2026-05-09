@@ -21,6 +21,8 @@ vim.cmd("set clipboard+=unnamedplus")
 vim.api.nvim_set_option("clipboard","unnamed")
 
 vim.g.mapleader = " "
+-- Use copilot.vim's bundled language server instead of npx-installed versions.
+vim.g.copilot_npx_command = 0
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -56,16 +58,6 @@ vim.keymap.set('n', '<leader>u', '0v$U<CR>', {})
 vim.keymap.set('n', '<leader>w', '<C-w>h', {})
 vim.keymap.set('n', '<leader>e', ':source Session.vim<CR>', {})
 
--- MAGMA
-require('lazy').setup({
-    {
-        'dccsillag/magma-nvim',
-        config = function()
-            require('magma').setup()
-        end,
-    }
-})
-
 vim.cmd("nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>")
 vim.cmd("nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>")
 vim.cmd("xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>")
@@ -81,8 +73,6 @@ vim.opt.cursorline = true
 -- Remap Copilot accept function to Ctrl + l
 vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
 vim.g.copilot_no_tab_map = true
-
-require('Comment').setup()
 
 -- knap
 -- set shorter name for keymap function
@@ -103,4 +93,3 @@ vim.keymap.set("n", "<leader>p", function() require("knap").process_once() end)
 vim.keymap.set("n", "<leader>w", function() require("knap").close_viewer() end)
 vim.keymap.set("n", "<leader>r", function() require("knap").toggle_autopreviewing() end)
 vim.keymap.set("n", "<leader>e", function() require("knap").forward_jump() end)
-
