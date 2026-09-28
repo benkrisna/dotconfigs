@@ -46,7 +46,7 @@ function M.highlight()
   local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
   for i, line in ipairs(lines) do
     if line:match(MARKER) then
-      vim.api.nvim_buf_add_highlight(bufnr, ns, "CellMarker", i - 1, 0, -1)
+      vim.api.nvim_buf_set_extmark(bufnr, ns, i - 1, 0, { end_col = #line, hl_group = "CellMarker" })
     end
   end
 end
