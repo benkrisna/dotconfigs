@@ -56,18 +56,10 @@ vim.keymap.set('n', '<leader>u', '0v$U<CR>', {})
 vim.keymap.set('n', '<leader>w', '<C-w>h', {})
 vim.keymap.set('n', '<leader>e', ':source Session.vim<CR>', {})
 
--- MAGMA keymaps (plugin loaded via lua/plugins/magma.lua)
-vim.cmd("nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>")
-vim.cmd("nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>")
-vim.cmd("xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>")
-vim.cmd("nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>")
-vim.cmd("nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>")
-vim.cmd("nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>")
-
-vim.cmd("let g:magma_automatically_open_output = v:false")
-vim.cmd("let g:magma_image_provider = 'ueberzug'")
-
 vim.opt.cursorline = true
+
+-- Neovim's Python host, used by molten-nvim etc.
+vim.g.python3_host_prog = "/opt/homebrew/Caskroom/miniconda/base/envs/nvim-py/bin/python"
 
 -- Remap Copilot accept function to Ctrl + l
 vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
