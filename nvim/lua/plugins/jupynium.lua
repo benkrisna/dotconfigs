@@ -14,7 +14,7 @@ return {
       -- python_host = vim.g.python3_host_prog or "python3",
 
       -- default_notebook_URL = "localhost:8888/nbclassic",
-      default_notebook_URL = "localhost:8889/tree",
+      default_notebook_URL = "localhost:8888/tree",
 
       -- Write jupyter command but without "notebook"
       -- When you call :JupyniumStartAndAttachToServer and no notebook is open,
