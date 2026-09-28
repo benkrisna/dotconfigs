@@ -17,5 +17,16 @@ return {
     -- Clear images when switching away from this tmux window/pane, instead
     -- of leaving stale kitty-protocol overlays behind.
     tmux_show_only_in_active_window = true,
+    -- image.nvim only serves molten plot output; snacks.nvim handles images
+    -- in documents (markdown, LaTeX math) and opened image files, so turn
+    -- off the overlapping features here to keep the two from drawing twice.
+    integrations = {
+      markdown = { enabled = false },
+      asciidoc = { enabled = false },
+      typst = { enabled = false },
+      neorg = { enabled = false },
+      syslang = { enabled = false },
+    },
+    hijack_file_patterns = {},
   },
 }

@@ -12,10 +12,13 @@ return {
         "-shell-escape",
         "-synctex=1",
         "-interaction=nonstopmode",
+        "-file-line-error",
       },
     }
     vim.g.tex_flavor = "latex"
     vim.g.vimtex_quickfix_mode = 0         -- don't auto-open quickfix
+    vim.g.vimtex_quickfix_open_on_warning = 0
+    vim.g.vimtex_quickfix_ignore_filters = { "Underfull", "Overfull" }
 
     -- auto-start continuous compilation so preview updates on every save
     -- without needing to remember \ll
