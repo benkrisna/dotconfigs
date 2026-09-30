@@ -60,3 +60,10 @@ vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true,
 vim.g.copilot_no_tab_map = true
 
 
+
+-- Pick up edits made on disk (e.g. by Claude Code) without unloading the buffer,
+-- so molten's kernel stays alive. Modified buffers are never auto-reloaded.
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "silent! checktime",
+})

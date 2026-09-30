@@ -29,7 +29,22 @@ return {
   opts = {
     terminal_cmd = "/Users/benkris/.local/bin/claude",
   },
-  config = true,
+  config = function(_, opts)
+    require("claudecode").setup(opts)
+    -- claudecode reloads the buffer with `:edit` after a diff is accepted, which fires
+    -- BufUnload, and molten-nvim kills the kernel on BufUnload. Suppress that event
+    -- during the reload so the kernel (and its variables) survive.
+    local diff = require("claudecode.diff")
+    local orig = diff.reload_file_buffers_manual
+    diff.reload_file_buffers_manual = function(...)
+      local saved = vim.o.eventignore
+      vim.opt.eventignore:append("BufUnload")
+      local ok, res = pcall(orig, ...)
+      vim.o.eventignore = saved
+      if not ok then error(res) end
+      return res
+    end
+  end,
   keys = {
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude Code" },
     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
